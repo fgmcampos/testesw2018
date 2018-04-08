@@ -64,7 +64,23 @@ public class UC01RegistraEmprestimoDeLivro {
 	    assertTrue(dataEsperada.equals(dataObtida));
 	}
 	@Test
-	public void CT05UC01FB_registrar_emprestimo_com_data_invalida() {
+	public void CT05UC01FB_registrar_emprestimo_com_data_valida() {
 		assertTrue(emprestimo.validaData("29/03/2000"));
+	}
+	
+	@Test
+	public void CT06UC01FB_registrar_emprestimo_com_data_invalida() {
+		assertFalse(emprestimo.validaData("30/02/2000"));
+	}
+	
+	@Test
+	public void CT07UC01FB_registrar_emprestimo_com_data_invalida() {
+		assertFalse(emprestimo.validaData("07-04-2018"));
+	}
+	
+	@Test
+	public void CT08UC01FB_registrar_emprestimo_com_data_valida() {
+		emprestimo.setDataEmprestimo("07/04/2018");
+		equals (emprestimo.validaData("07/04/2018"));
 	}
 }

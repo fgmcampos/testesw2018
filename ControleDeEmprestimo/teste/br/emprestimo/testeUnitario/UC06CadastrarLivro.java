@@ -47,6 +47,32 @@ public class UC06CadastrarLivro {
 			assertEquals("ISBN invalido", e.getMessage());
 		}
 	}
+	
+	
+	@Test(expected = RuntimeException.class)
+	public void CT05UC06CadastrarLivro_com_titulo_invalido_branco() {
+		livro.setTitulo("");
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void CT06UC06CadastrarLivro_com_titulo_invalido_nulo() {
+		livro.setTitulo(null);
+	}
+	
+
+	@Test
+	public void CT06UC06CadastrarLivro_com_titulo_valido() {
+		assertEquals("Engenharia de Software", livro.getTitulo());
+	}
+	@Test
+	public void CT07UC01CadastrarLivro_com_titulo_invalido(){
+		try{
+			livro.setTitulo("");
+			fail ("deveria lançar uma exceção");
+		}catch(RuntimeException e){
+			assertEquals("Titulo invalido", e.getMessage());
+		}
+	}
 }
 
 
